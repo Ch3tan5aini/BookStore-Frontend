@@ -5,7 +5,7 @@ import Spinner from '../components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { SnackbarProvider, enqueueSnackbar } from 'notistack';
 
 const EditBook = () => {
   const [Loading, setLoading] = useState(false);
@@ -23,8 +23,10 @@ const EditBook = () => {
         setTitle(Response.data.book.title);
         setPublishYear(Response.data.book.publishYear)
         setLoading(false);
+
       }).catch(error => {
         console.log(error);
+        enqueueSnackbar("Error Getting Book", { variant: 'error' })
         setLoading(false)
       })
   }, [])
@@ -40,8 +42,10 @@ const EditBook = () => {
       .then(() => {
         setLoading(false);
         navigate("/")
+        enqueueSnackbar("Book Edited Successfully", { variant: 'success' })
       }).catch(error => {
         console.log(error);
+        enqueueSnackbar("Error Editing Book", { variant: 'error' })
         setLoading(false)
       })
   }

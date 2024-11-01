@@ -20,14 +20,14 @@ const HomePage = () => {
     useEffect(() => {
         setLoading(true);
         axios.get("http://localhost:3000/books")
-        .then((Response) => {
-            setBooks(Response.data.data);
-            setLoading(false);
+            .then((Response) => {
+                setBooks(Response.data.data);
+                setLoading(false);
             }).catch((error) => {
                 setLoading(true);
                 console.log(error);
             })
-        }, [])
+    }, [])
 
     function toggleShowType() {
         showType === "table" ? setShowType("card") : setShowType("table")
@@ -40,11 +40,11 @@ const HomePage = () => {
                 <div className='flex'>
                     <div className="flex items-center mr-8">
                         <label className="relative inline-flex items-center cursor-pointer" >
-                            <input type="checkbox" className="sr-only peer"  onClick={toggleShowType} />
+                            <input type="checkbox" className="sr-only peer" onClick={toggleShowType} />
                             <div className="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:bg-blue-600 peer-focus:ring-blue-300  transition-all"></div>
                             <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all peer-checked:translate-x-5"></div>
                         </label>
-                        <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{showType === "card" ? <FaRegAddressCard className='text-2xl'/> : <FaTableCells className='text-2xl'/>}</span>
+                        <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{showType === "card" ? <FaRegAddressCard className='text-2xl' /> : <FaTableCells className='text-2xl' />}</span>
                     </div>
 
                     <Link to='/books/create'>
@@ -55,7 +55,7 @@ const HomePage = () => {
             {loading ? (
                 <Spinner />
             ) : (
-                showType === "card" ?  (<BooksCard books={books} />) : (<BooksTable books={books} /> )
+                showType === "card" ? (<BooksCard books={books} />) : (<BooksTable books={books} />)
             )}
         </div>
     )

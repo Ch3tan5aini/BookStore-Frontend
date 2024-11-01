@@ -28,11 +28,11 @@ const ShowBook = () => {
 
   return (
     <div className='p-4'>
-      <BackButton / >
+      <BackButton />
       <h1 className='text-3xl my-4'>Book Details</h1>
       {
         Loading ? (
-          <Spinner/>
+          <Spinner />
         ) : (
           <div className="flex flex-col border-2 rounded-xl w-fit p-4">
             <div className="my-4">

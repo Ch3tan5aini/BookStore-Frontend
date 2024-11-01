@@ -72,16 +72,16 @@ router.patch('/:id', async (req, res) => {
 //Delete Route to Delete a Book
 router.delete('/:id', async (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const result = await Book.findByIdAndDelete(id);
-        if(!result){
+        if (!result) {
             res.status(404).send({ success: false, message: "Invalid Id, Please Try Again!" })
         }
-      res.status(200).send({ success: true, message: "Book Deleted" });
+        res.status(200).send({ success: true, message: "Book Deleted" });
     } catch (error) {
-      console.error('Error occurred:', error.message);
-      res.status(500).send({ success: false, message: "Try Again Later"});
+        console.error('Error occurred:', error.message);
+        res.status(500).send({ success: false, message: "Try Again Later" });
     }
-  });
+});
 
-  export default router;
+export default router;
